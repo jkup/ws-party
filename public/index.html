@@ -4,5 +4,18 @@
   </head>
   <body>
     <h1>Hello, ws-party</h1>
+    <script>
+      let currentWebSocket = null;
+      const wss = document.location.protocol === "http:" ? "ws://" : "wss://";
+      let ws = new WebSocket(
+        "https://ws-party.jkup.workers.dev/api/room/" + roomname + "/websocket"
+      );
+      ws.addEventListener("open", (event) => {
+        currentWebSocket = ws;
+
+        // Send user info message.
+        ws.send("Hello world!");
+      });
+    </script>
   </body>
 </html>
