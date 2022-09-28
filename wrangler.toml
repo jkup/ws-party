@@ -1,3 +1,12 @@
 name = "ws-party"
 main = "src/index.ts"
 compatibility_date = "2022-09-28"
+
+[durable_objects]
+bindings = [
+  { name = "DO_WEBSOCKET", class_name = "WebSocketDurableObject" },
+]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["WebSocketDurableObject"]
